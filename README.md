@@ -6,7 +6,7 @@ A modern React application starter kit with a robust set of features.
 
 - Built with Vite for lightning-fast development
 - TypeScript for type safety
-- React 18 with modern hooks
+- React 19 (latest production version) with modern hooks
 - shadcn-ui components for beautiful UI
 - Tailwind CSS for styling
 - pnpm for efficient package management
