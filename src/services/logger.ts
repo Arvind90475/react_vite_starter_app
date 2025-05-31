@@ -1,25 +1,27 @@
 
 export type LogLevel = 'debug' | 'info' | 'warn' | 'error';
 
+export type LogMetadata = Record<string, unknown>;
+
 export interface LogEntry {
   level: LogLevel;
   message: string;
   timestamp: string;
-  metadata?: Record<string, any>;
+  metadata?: LogMetadata;
 }
 
 export interface Logger {
-  debug: (message: string, metadata?: Record<string, any>) => void;
-  info: (message: string, metadata?: Record<string, any>) => void;
-  warn: (message: string, metadata?: Record<string, any>) => void;
-  error: (message: string, metadata?: Record<string, any>) => void;
+  debug: (message: string, metadata?: LogMetadata) => void;
+  info: (message: string, metadata?: LogMetadata) => void;
+  warn: (message: string, metadata?: LogMetadata) => void;
+  error: (message: string, metadata?: LogMetadata) => void;
 }
 
 // Core logging functions (pure functions, no React dependency)
 export const createLogEntry = (
   level: LogLevel,
   message: string,
-  metadata?: Record<string, any>
+  metadata?: LogMetadata
 ): LogEntry => ({
   level,
   message,
@@ -34,19 +36,19 @@ export const formatLogEntry = (entry: LogEntry): string => {
 
 // Console logger implementation
 export const createConsoleLogger = (): Logger => ({
-  debug: (message: string, metadata?: Record<string, any>) => {
+  debug: (message: string, metadata?: LogMetadata) => {
     const entry = createLogEntry('debug', message, metadata);
     console.debug(formatLogEntry(entry));
   },
-  info: (message: string, metadata?: Record<string, any>) => {
+  info: (message: string, metadata?: LogMetadata) => {
     const entry = createLogEntry('info', message, metadata);
     console.info(formatLogEntry(entry));
   },
-  warn: (message: string, metadata?: Record<string, any>) => {
+  warn: (message: string, metadata?: LogMetadata) => {
     const entry = createLogEntry('warn', message, metadata);
     console.warn(formatLogEntry(entry));
   },
-  error: (message: string, metadata?: Record<string, any>) => {
+  error: (message: string, metadata?: LogMetadata) => {
     const entry = createLogEntry('error', message, metadata);
     console.error(formatLogEntry(entry));
   },

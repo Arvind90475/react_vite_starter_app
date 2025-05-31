@@ -5,7 +5,7 @@ import { logger } from '@/services/logger';
 /**
  * Enhanced lazy loading utility with error handling and logging
  */
-export const createLazyComponent = <T extends ComponentType<any>>(
+export const createLazyComponent = <T extends ComponentType<unknown>>(
   importFn: () => Promise<{ default: T }>,
   componentName: string
 ) => {
@@ -24,11 +24,3 @@ export const createLazyComponent = <T extends ComponentType<any>>(
   });
 };
 
-/**
- * Preload a lazy component
- */
-export const preloadComponent = (importFn: () => Promise<any>) => {
-  importFn().catch((error) => {
-    logger.error('Failed to preload component', { error });
-  });
-};
