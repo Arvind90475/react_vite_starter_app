@@ -1,5 +1,5 @@
 
-import { logger } from './logger';
+import { logger } from './logging/logger';
 
 export interface ApiResponse<T> {
   data: T;

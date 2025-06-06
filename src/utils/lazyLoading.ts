@@ -1,6 +1,6 @@
 
-import { lazy, ComponentType } from 'react';
-import { logger } from '@/services/logger';
+import { logger } from '@/services/logging/logger';
+import { ComponentType, lazy } from 'react';
 
 /**
  * Enhanced lazy loading utility with error handling and logging

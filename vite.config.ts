@@ -17,4 +17,19 @@ export default defineConfig(({ mode }) => ({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  build: {
+    sourcemap: true, // Generate sourcemaps for debugging production builds
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          react: ['react', 'react-dom'],
+          // Add additional chunks as needed
+        }
+      }
+    }
+  },
+  // Enable detailed sourcemaps for development
+  css: {
+    devSourcemap: true,
+  }
 }));

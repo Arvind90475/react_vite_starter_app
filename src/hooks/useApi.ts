@@ -1,7 +1,7 @@
 
-import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { fetchTodos, TodoItem } from '@/services/api';
-import { logger } from '@/services/logger';
+import { logger } from '@/services/logging/logger';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 
 // Query keys (centralized for consistency)
 export const queryKeys = {

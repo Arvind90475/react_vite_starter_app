@@ -1,6 +1,5 @@
-
-import { Component, ReactNode, ErrorInfo } from 'react';
-import { logger } from '@/services/logger';
+import { logger } from "@/services/logging/logger";
+import { Component, ErrorInfo, ReactNode } from "react";
 
 interface Props {
   children: ReactNode;
@@ -23,8 +22,8 @@ export class ErrorBoundary extends Component<Props, State> {
   }
 
   componentDidCatch(error: Error, errorInfo: ErrorInfo) {
-    logger.error('ErrorBoundary caught an error', {
-      error: error.message,
+    logger.error("ErrorBoundary caught an error", {
+      error: error,
       stack: error.stack,
       componentStack: errorInfo.componentStack,
     });
@@ -36,7 +35,9 @@ export class ErrorBoundary extends Component<Props, State> {
         this.props.fallback || (
           <div className="min-h-screen flex items-center justify-center bg-gray-50">
             <div className="text-center p-8">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">Something went wrong</h2>
+              <h2 className="text-2xl font-bold text-gray-900 mb-4">
+                Something went wrong
+              </h2>
               <p className="text-gray-600 mb-6">
                 We're sorry, but something unexpected happened.
               </p>
